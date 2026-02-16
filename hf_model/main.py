@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 
-app = FastAPI(title="API de Traducción Funcional")
+app = FastAPI()
 
 class TranslationRequest(BaseModel):
     texto: str
@@ -28,6 +28,31 @@ def traducir(request: TranslationRequest):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+
+
+# Pipeline de QA
+qa = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
+
+# Schema de entrada
+class QARequest(BaseModel):
+    contexto: str
+    pregunta: str
+
+# Endpoint de QA
+@app.post("/respuesta")
+def respuesta(data: QARequest):
+    try:
+        result = qa(question=data.pregunta, context=data.contexto)
+        return {
+            "answer": result["answer"],
+            "score": round(result["score"], 2),
+            "start": result["start"],
+            "end": result["end"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 
 
