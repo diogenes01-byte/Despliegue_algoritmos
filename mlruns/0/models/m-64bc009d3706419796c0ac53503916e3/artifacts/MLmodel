@@ -1,0 +1,23 @@
+artifact_path: file:///C:/Users/lugod/Downloads/MLflow/mlruns/0/models/m-64bc009d3706419796c0ac53503916e3/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.14
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.10.0
+model_id: m-64bc009d3706419796c0ac53503916e3
+model_size_bytes: 436333
+model_uuid: m-64bc009d3706419796c0ac53503916e3
+prompts: null
+run_id: f7bcb5d42218431a9489a84bc3ffdb6f
+utc_time_created: '2026-02-21 21:52:57.846645'
