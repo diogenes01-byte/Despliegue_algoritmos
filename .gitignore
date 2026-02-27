@@ -1,13 +1,25 @@
-# Python
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Cache Python
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
-env_fastapi/
-*.env
+
+# Archivos de entorno
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
 
 # VSCode
 .vscode/
 
-# Jupyter
-.ipynb_checkpoints/
+# Logs
+*.log
